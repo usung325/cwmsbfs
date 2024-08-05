@@ -11,7 +11,8 @@ const MyApp = () => {
       y: 200,
       width: 20,
       height: 15,
-      alt: 'Description of image 1'
+      alt: 'Description of image 1',
+      description: 'Pittsburgh PA'
     },
     {
       src: '/images/im3.png',
@@ -20,7 +21,8 @@ const MyApp = () => {
       y: 300,
       width: 20,
       height: 15,
-      alt: 'Description of image 2'
+      alt: 'Description of image 2',
+      description: 'New York NY'
     },
     {
       src: '/images/im3.png',
@@ -29,7 +31,8 @@ const MyApp = () => {
       y: 600,
       width: 20,
       height: 15,
-      alt: 'Description of image 1'
+      alt: 'Description of image 1',
+      description: 'Chicago IL'
     },
     {
       src: '/images/im3.png',
@@ -38,13 +41,17 @@ const MyApp = () => {
       y: 100,
       width: 20,
       height: 15,
-      alt: 'Description of image 2'
+      alt: 'Description of image 2',
+      description: 'San Francisco CA'
     },
     // ... add more images as needed
   ];
 
   return (
     <>
+      <div className="w-full">
+        <p className="text-black text-sm mx-auto text-center pt-5">Conversations With My Straight Boyfriends</p>
+      </div>
       <InfiniteCanvas images={images} />
       <div className="absolute -z-10 top-0 ">
         <Scene />

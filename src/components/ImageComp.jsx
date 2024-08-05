@@ -5,9 +5,10 @@ const InfiniteCanvas = ({ images = [] }) => {
     const [isDragging, setIsDragging] = useState(false);
     const [startPosition, setStartPosition] = useState({ x: 0, y: 0 });
     const [offset, setOffset] = useState({ x: 400, y: 100 });
+    const [hoveredImage, setHoveredImage] = useState(null);
 
     const handleMouseDown = (e) => {
-        if (e.target.tagName.toLowerCase() === 'img') return; // Don't start dragging if clicking on an image
+        if (e.target.tagName.toLowerCase() === 'img') return;
         setIsDragging(true);
         setStartPosition({ x: e.clientX - offset.x, y: e.clientY - offset.y });
     };
@@ -47,11 +48,8 @@ const InfiniteCanvas = ({ images = [] }) => {
                 }}
             >
                 {images.map((img, index) => (
-                    <a
+                    <div
                         key={index}
-                        href={img.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
                         className="absolute"
                         style={{
                             left: img.x,
@@ -59,18 +57,33 @@ const InfiniteCanvas = ({ images = [] }) => {
                             width: img.width,
                             height: img.height
                         }}
-                        onClick={(e) => {
-                            if (isDragging) {
-                                e.preventDefault();
-                            }
-                        }}
+                        onMouseEnter={() => setHoveredImage(img)}
+                        onMouseLeave={() => setHoveredImage(null)}
                     >
-                        <img
-                            src={img.src}
-                            alt={img.alt || `Image ${index}`}
-                            className="w-full h-full object-cover"
-                        />
-                    </a>
+                        <a
+                            href={img.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => {
+                                if (isDragging) {
+                                    e.preventDefault();
+                                }
+                            }}
+                        >
+                            <img
+                                src={img.src}
+                                alt={img.alt || `Image ${index}`}
+                                className="w-full h-full object-cover"
+                            />
+                        </a>
+                        {hoveredImage === img && img.description && (
+                            <div className="absolute bottom-0 left-7 right-0 top-4 text-white p-2 text-sm  w-[300px]">
+                                <p className="hitespace-nowrap overflow-hidden text-overflow-ellipsis">
+                                    {img.description}
+                                </p>
+                            </div>
+                        )}
+                    </div>
                 ))}
             </div>
         </div>
