@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react"
 import React from 'react';
 import InfiniteCanvas from './components/ImageComp';  // Adjust this import path as needed
 import Scene from './components/Scene';
@@ -56,6 +57,7 @@ const MyApp = () => {
       <div className="absolute -z-10 top-0 ">
         <Scene />
       </div>
+      <Analytics />
     </>
   );
 };
