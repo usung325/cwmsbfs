@@ -6,7 +6,7 @@ const MyApp = () => {
   const images = [
     {
       src: '/images/im3.png',
-      link: 'https://x.com/tsots2501',
+      link: 'http://anthonyalterio.com/portfolio_page/boi-doet/',
       x: 100,
       y: 200,
       width: 20,
@@ -15,7 +15,7 @@ const MyApp = () => {
     },
     {
       src: '/images/im3.png',
-      link: 'https://github.com/usung325',
+      link: 'http://anthonyalterio.com/portfolio_page/feedbag/',
       x: 400,
       y: 300,
       width: 20,
@@ -24,7 +24,7 @@ const MyApp = () => {
     },
     {
       src: '/images/im3.png',
-      link: 'https://x.com/tsots2501',
+      link: 'http://anthonyalterio.com/portfolio_page/poor-boys-drag/',
       x: 500,
       y: 600,
       width: 20,
@@ -33,7 +33,7 @@ const MyApp = () => {
     },
     {
       src: '/images/im3.png',
-      link: 'https://github.com/usung325',
+      link: 'http://anthonyalterio.com/portfolio_page/throat-punch/',
       x: 800,
       y: 100,
       width: 20,
