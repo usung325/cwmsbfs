@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { motion } from "framer-motion"
 
 const InfiniteCanvas = ({ images = [] }) => {
     const containerRef = useRef(null);
@@ -41,6 +42,7 @@ const InfiniteCanvas = ({ images = [] }) => {
             onMouseLeave={handleMouseUp}
         >
             <div
+
                 className="absolute"
                 style={{
                     transform: `translate(${offset.x}px, ${offset.y}px)`,
@@ -48,7 +50,10 @@ const InfiniteCanvas = ({ images = [] }) => {
                 }}
             >
                 {images.map((img, index) => (
-                    <div
+                    <motion.div
+                        whileHover={{ scale: 1.5 }}
+                        onHoverStart={e => { }}
+                        onHoverEnd={e => { }}
                         key={index}
                         className="absolute"
                         style={{
@@ -83,10 +88,10 @@ const InfiniteCanvas = ({ images = [] }) => {
                                 </p>
                             </div>
                         )}
-                    </div>
+                    </motion.div>
                 ))}
             </div>
-        </div>
+        </div >
     );
 };
 

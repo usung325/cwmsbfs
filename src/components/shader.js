@@ -8,6 +8,7 @@ export const vertex = `
 `
 
 export const fragment = `
+    uniform float uSize;
     precision mediump float;
 
     uniform float iTime;
@@ -55,18 +56,24 @@ export const fragment = `
         float amplitude = 30.;
         float speed = iTime * 2.;
         tuv.x += sin(tuv.y*frequency+speed)/amplitude;
-        tuv.y += sin(tuv.x*frequency*1.5+speed)/(amplitude*.5);
+        tuv.y += sin(tuv.x*frequency*uSize+speed)/(amplitude*.5);
         
-        // New color definitions (converted from hex to RGB, normalized to 0-1)
-        vec3 color1 = vec3(0.718, 0.569, 0.702);  // #B791B3
-        vec3 color2 = vec3(0.855, 0.604, 0.745);  // #DA9ABE
-        vec3 color3 = vec3(0.761, 0.929, 0.694);  // #C2EDB1
-        vec3 color4 = vec3(0.925, 0.953, 0.780);  // #ECF3C7
+        // Updated color definitions (converted from hex to RGB, normalized to 0-1)
+        vec3 color1 = vec3(0.929, 0.890, 0.969);  // EDE3F7
+        vec3 color2 = vec3(0.725, 0.800, 0.486);  // B9CC7C
+        vec3 color3 = vec3(0.780, 0.471, 0.412);  // C77869
+        vec3 color4 = vec3(0.769, 0.478, 0.671);  // C47AAB
+        vec3 color5 = vec3(0.627, 0.820, 0.918);  // A0D1EA
+        vec3 color6 = vec3(0.584, 0.588, 0.631);  // 9596A1
         
-        vec3 layer1 = mix(color1, color2, S(-.3, .2, (tuv*Rot(radians(-5.))).x));
-        vec3 layer2 = mix(color3, color4, S(-.3, .2, (tuv*Rot(radians(-5.))).x));
+        // Create three layers using pairs of colors
+        vec3 layer1 = mix(color1, color6, S(-.3, .2, (tuv*Rot(radians(-5.))).x));
+        vec3 layer2 = mix(color3, color4, S(-.3, .2, (tuv*Rot(radians(5.))).x));
+        vec3 layer3 = mix(color5, color2, S(-.3, .2, (tuv*Rot(radians(0.))).x));
         
+        // Mix the layers
         vec3 finalComp = mix(layer1, layer2, S(.5, -.3, tuv.y));
+        finalComp = mix(finalComp, layer3, S(-.9, .9, sin(tuv.y*2.4 + iTime)));
         
         vec3 col = finalComp;
         
