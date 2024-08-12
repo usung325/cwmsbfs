@@ -9,4 +9,9 @@
   box-sizing: border-box;
   /* background-color: red; */
   /* transition: all .25s ease-out; */
+  /* overflow: hidden; */
+}
+
+p {
+  font-size: 0.8em;
 }

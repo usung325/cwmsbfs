@@ -3,6 +3,7 @@ import React from 'react';
 import InfiniteCanvas from './components/ImageComp';  // Adjust this import path as needed
 import Scene from './components/Scene';
 import Scene2 from './components/Scene2';
+import TextPage from "./pages/TextPage";
 
 const MyApp = () => {
   const images = [
@@ -55,9 +56,14 @@ const MyApp = () => {
       <div className="w-full">
         <p className="text-black text-sm mx-auto text-center pt-5">Conversations With My Straight Boyfriends</p>
       </div>
+
+
+      {/* <TextPage /> */}
+
       <InfiniteCanvas images={images} />
       <div className="absolute -z-10 top-0 ">
         <Scene />
+        {/* <Scene2 /> */}
       </div>
       <Analytics />
     </>
