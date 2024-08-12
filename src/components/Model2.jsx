@@ -12,14 +12,14 @@ export default function Model() {
     const plane = useRef();
     // let tick = 100.;
 
-    const { size } = useControls({
-        size: {
-            value: 12.5,
-            min: 0.1,
-            max: 100.0,
-            step: 0.1
-        }
-    });
+    // const { size } = useControls({
+    //     size: {
+    //         value: 12.5,
+    //         min: 0.1,
+    //         max: 100.0,
+    //         step: 0.1
+    //     }
+    // });
 
     const texture = useTexture('/images/im1.jpg');
     const width = window.innerWidth;
@@ -35,13 +35,13 @@ export default function Model() {
         let tick = state.clock.getElapsedTime();
         plane.current.material.uniforms.iTime.value = tick + 20;
         plane.current.material.uniforms.uTexture.value = texture;
-        plane.current.material.uniforms.uSize.value = size;
+        // plane.current.material.uniforms.uSize.value = size;
 
     })
 
 
     const uniforms = useRef({
-        uSize: { value: size },
+        // uSize: { value: size },
         uTexture: { value: texture },
         iTime: {
             type: "f",
@@ -53,7 +53,7 @@ export default function Model() {
         },
     });
 
-    console.log(size);
+    // console.log(size);
 
     return (
         <mesh ref={plane} scale={scale}>

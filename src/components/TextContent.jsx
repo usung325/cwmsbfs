@@ -21,7 +21,7 @@ export default function TextContent() {
             </div>
 
 
-            <img src="./images/imVid.png" className="h-[50em]" />
+            <img src="/images/imVid.png" className="h-[50em]" />
 
         </div>
     )
